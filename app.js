@@ -8,9 +8,9 @@ app.get("/", function(req, res){
 });
 
 app.get("/results", function(req, res){
-    var search = req.query.search;
-    var url = "http://www.omdbapi.com/?apikey=thewdb&s="+ search;
-    
+    var search = req.query.search.toLowerCase();
+    var url = "https://pokeapi.co/api/v2/pokemon/"+ search;
+
     request(url, function(error, response, body){
         if(!error && response.statusCode == 200){
             var data = JSON.parse(body);
